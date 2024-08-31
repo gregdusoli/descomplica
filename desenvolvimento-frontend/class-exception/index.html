@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade da disciplina de Desenvolvimento Dinâmico</title>
+
+  <style>
+    * {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 4px;
+
+      input {
+        min-height: 28px;
+      }
+
+      button {
+        margin: 20px 0px;
+        min-height: 34px;
+        font-size: 18px;
+      }
+
+      label {
+        font-weight: bold;
+      }
+    }
+
+    #resultado {
+      margin: 0px 10px;
+    }
+
+    .sucesso {
+      border: 1px solid green;
+      border-radius: 4px;
+      background: rgb(96, 238, 172);
+      text-align: center;
+      margin: 10px 0px;
+    }
+
+    .erro {
+      border: 1px solid red;
+      border-radius: 4px;
+      background: rgb(240, 147, 147);
+      text-align: center;
+      margin: 10px 0px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <form name="formCadastro" onsubmit="main()">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome">
+
+    <label for="idade">Idade</label>
+    <input type="number" min="18" max="80" name="idade">
+
+    <label for="cargo">Cargo</label>
+    <input type="text" name="cargo">
+
+    <label for="departamento">Departamento</label>
+    <input type="text" name="departamento">
+
+    <label for="linguagem">Linguagem</label>
+    <input type="text" name="linguagem">
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <div id="resultado"></div>
+</body>
+
+<script>
+  class Funcionario {
+    constructor(nome, idade, cargo) {
+      this.nome = nome;
+      this.idade = idade;
+      this.cargo = cargo;
+    }
+
+    seApresentar() {
+      return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e sou ${this.cargo}.`;
+    }
+
+    trabalhar() {
+      return `${this.nome} está trabalhando.`;
+    }
+  }
+
+  class Gerente extends Funcionario {
+    constructor(nome, idade, cargo, departamento) {
+      super(nome, idade, cargo);
+      this.departamento = departamento;
+    }
+
+    gerenciar() {
+      return `${this.nome} está gerenciando o departamento de ${this.departamento}.`;
+    }
+  }
+
+  class Desenvolvedor extends Funcionario {
+    constructor(nome, idade, cargo, departamento, linguagem) {
+      super(nome, idade, cargo);
+      this.linguagem = linguagem;
+    }
+
+    programar() {
+      return `${this.nome} está programando em ${this.linguagem}.`;
+    }
+  }
+
+  function validarForm() {
+    return (
+      document.forms["formCadastro"]['nome'].value === '' ||
+      document.forms["formCadastro"]['idade'].value === '' ||
+      document.forms["formCadastro"]['cargo'].value === '' ||
+      document.forms["formCadastro"]['departamento'].value === '') ? false : true;
+  }
+
+  function limparTela() {
+    document.getElementById("resultado").innerHTML = '';
+    document.getElementById("resultado").innerText = '';
+  }
+
+  function limparForm() {
+    document.forms["formCadastro"]['nome'].value = '';
+    document.forms["formCadastro"]['idade'].value = '';
+    document.forms["formCadastro"]['cargo'].value = '';
+    document.forms["formCadastro"]['departamento'].value = '';
+    document.forms["formCadastro"]['linguagem'].value = '';
+  }
+
+  function exibirErro() {
+    return document.getElementById("resultado").innerHTML = '<div class="erro"><h4>Preencha os dados antes de enviar o cadastro!</h4></div>';
+  }
+
+  function exibirInfo(dados) {
+    document.getElementById("resultado").innerHTML += `<div class="sucesso"><h4>${dados}</h4></div>`;
+  }
+
+  function main() {
+    event.preventDefault();
+
+    if (!validarForm()) {
+      return exibirErro();
+    }
+
+    const dados = [];
+    dados.push({ key: 'nome', value: document.forms["formCadastro"]['nome'].value });
+    dados.push({ key: 'idade', value: document.forms["formCadastro"]['idade'].value });
+    dados.push({ key: 'cargo', value: document.forms["formCadastro"]['cargo'].value });
+    dados.push({ key: 'departamento', value: document.forms["formCadastro"]['departamento'].value });
+    if (document.forms["formCadastro"]['linguagem'].value) {
+      dados.push({ key: 'linguagem', value: document.forms["formCadastro"]['linguagem'].value });
+    }
+
+    limparForm();
+    limparTela();
+
+    if (dados.length < 5) {
+      const gerente = new Gerente(dados[0].value, dados[1].value, dados[2].value, dados[3].value);
+
+      exibirInfo(gerente.seApresentar());
+      exibirInfo(gerente.trabalhar());
+      exibirInfo(gerente.gerenciar());
+    } else {
+      const desenvolvedor = new Desenvolvedor(dados[0].value, dados[1].value, dados[2].value, dados[3].value, dados[4].value);
+
+      exibirInfo(desenvolvedor.seApresentar());
+      exibirInfo(desenvolvedor.trabalhar());
+      exibirInfo(desenvolvedor.programar());
+    }
+  }
+</script>
+
+</html>

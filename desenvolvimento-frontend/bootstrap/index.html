@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body class="bg-dark text-light">
+  <header>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="#" onclick="sectionAnchor('collapse1')">Seção 1</a>
+            <a class="nav-link" href="#" onclick="sectionAnchor('collapse2')">Seção 2</a>
+            <a class="nav-link" href="#" onclick="sectionAnchor('collapse3')">Seção 3</a>
+          </div>
+        </div>
+      </div>
+      <div class="divider">
+    </nav>
+    <h1 class="mt-3 mb-5 text-center">Atividade Bootstrap</h1>
+  </header>
+
+  <main class="p-3 container-fluid">
+
+    <div class="accordion" id="accordion1" data-bs-theme="dark">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="collapse1">
+            Seção 1
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion1">
+          <div class="accordion-body">
+            <p>Deserunt amet eu aliqua labore aute eiusmod Lorem anim nisi sint qui laboris. Ad id elit eu esse culpa
+              sit quis
+              fugiat quis pariatur eiusmod ad sint. Tempor aute Lorem consectetur nisi nisi velit et consectetur veniam
+              velit
+              laboris exercitation quis occaecat. Duis laborum aute fugiat veniam pariatur qui eu excepteur do.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="collapse2">
+            Seção 2
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion1">
+          <div class="accordion-body">
+            <p>Deserunt amet eu aliqua labore aute eiusmod Lorem anim nisi sint qui laboris. Ad id elit eu esse culpa
+              sit quis
+              fugiat quis pariatur eiusmod ad sint. Tempor aute Lorem consectetur nisi nisi velit et consectetur veniam
+              velit
+              laboris exercitation quis occaecat. Duis laborum aute fugiat veniam pariatur qui eu excepteur do.</p>
+            <table class="table border-lighter" data-bs-theme="dark">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Sobrenome</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@larryb</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="collapse3">
+            Seção 3
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordion1">
+          <div class="accordion-body">
+            <p>Id est magna tempor laborum nostrud laboris enim occaecat do est elit occaecat id deserunt. Deserunt
+              consequat
+              non esse aliquip laborum laboris elit ullamco ut laborum officia. Commodo dolor qui anim incididunt et
+              aliqua
+              ullamco ullamco fugiat enim amet adipisicing pariatur sunt. Aliqua veniam quis reprehenderit enim
+              voluptate
+              nulla
+              deserunt tempor nostrud eu id. Amet labore labore labore pariatur aliqua nisi non quis ea ipsum quis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="mt-5 text-center">
+    <p><small>2024. Desenvolvido por <a href="https://linkedin.com/in/gregdusoli" target="_blank">Guilherme Gomes</a>.
+        Todos os direitos
+        reservados. ©</small></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function sectionAnchor(id) {
+      let element;
+      const elements = ['collapse1', 'collapse2', 'collapse3'];
+
+      elements.forEach(show => {
+        if (show === id) {
+          element = show === 'collapse1' ? 'collapseOne' : show === 'collapse2' ? 'collapseTwo' : 'collapseThree';
+
+          console.log('show', { show, element });
+
+          var btnSectionShow = document.getElementById(show);
+          btnSectionShow.className = 'accordion-button';
+          btnSectionShow.ariaExpanded = true;
+          var divSectionShow = document.getElementById(element);
+          divSectionShow.className = 'accordion-collapse collapse show';
+
+          elements.splice(elements.indexOf(id), 1);
+
+          elements.forEach(hide => {
+            element = hide === 'collapse1' ? 'collapseOne' : hide === 'collapse2' ? 'collapseTwo' : 'collapseThree';
+
+            console.log('hide', { hide, element });
+
+            var btnSectionHide = document.getElementById(hide);
+            btnSectionHide.className = 'accordion-button collapsed';
+            btnSectionHide.ariaExpanded = false;
+            var divSectionHide = document.getElementById(element);
+            divSectionHide.className = 'accordion-collapse collapse';
+          })
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
